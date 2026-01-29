@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Instagram, MapPin, Heart } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -15,7 +16,8 @@ export default function Footer() {
               Colombian-born salsa instructor in Houston helping women feel confident,
               feminine, and free on the dance floor—no partner needed.
             </p>
-            <p className="text-mango-400 font-medium">
+            <p className="text-mango-400 font-medium flex items-center gap-2">
+              <Heart className="h-4 w-4 fill-current" />
               Confidence starts in your feet.
             </p>
           </div>
@@ -49,7 +51,10 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Locations</h3>
+            <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
+              <MapPin className="h-4 w-4" />
+              Locations
+            </h3>
             <p className="text-gray-300 mb-2">
               Partner studios across Houston:
             </p>
@@ -64,9 +69,10 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-mango-400 hover:text-mango-200 transition-colors"
+                className="inline-flex items-center gap-2 text-mango-400 hover:text-mango-200 transition-colors"
               >
-                Follow on Instagram →
+                <Instagram className="h-5 w-5" />
+                Follow on Instagram
               </a>
             </div>
           </div>
