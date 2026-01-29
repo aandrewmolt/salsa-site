@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors - Carnival Modern */
+  --coral-50: #fff3f0;
+  --coral-100: #ffe5de;
+  --coral-200: #ffc9ba;
+  --coral-300: #ff9f88;
+  --coral-400: #ff7c61;
+  --coral-500: #f2574b;
+  --coral-600: #e0433a;
+  --coral-700: #c2362f;
+  --coral-800: #9c2c28;
+  --coral-900: #7c241f;
+
+  --mango-200: #ffe0b1;
+  --mango-400: #ffbe5c;
+  --mango-500: #f59e0b;
+
+  --teal-400: #39c6c4;
+  --teal-500: #1ba6a6;
+  --teal-600: #138a8a;
+
+  --gold-400: #ffd36a;
+  --gold-500: #f0b63a;
+  --gold-600: #d69721;
+
+  --sun-50: #fff8f2;
+  --sand-50: #fff7ed;
+  --sand-100: #f6eadc;
+
+  /* Neutrals */
+  --background: #fff8f2;
+  --foreground: #1f1a16;
+  --muted: #6f655b;
+  --border: #eadfd2;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-coral-50: var(--coral-50);
+  --color-coral-100: var(--coral-100);
+  --color-coral-200: var(--coral-200);
+  --color-coral-300: var(--coral-300);
+  --color-coral-400: var(--coral-400);
+  --color-coral-500: var(--coral-500);
+  --color-coral-600: var(--coral-600);
+  --color-coral-700: var(--coral-700);
+  --color-coral-800: var(--coral-800);
+  --color-coral-900: var(--coral-900);
+  --color-mango-200: var(--mango-200);
+  --color-mango-400: var(--mango-400);
+  --color-mango-500: var(--mango-500);
+  --color-teal-400: var(--teal-400);
+  --color-teal-500: var(--teal-500);
+  --color-teal-600: var(--teal-600);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-sun-50: var(--sun-50);
+  --color-sand-50: var(--sand-50);
+  --color-sand-100: var(--sand-100);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --font-sans: var(--font-instrument);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-instrument), Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-unbounded), var(--font-instrument), Arial, Helvetica, sans-serif;
+}
+
+.tropical-hero {
+  background:
+    radial-gradient(800px 500px at 5% 0%, rgba(242, 87, 75, 0.22), transparent 60%),
+    radial-gradient(600px 500px at 95% 10%, rgba(255, 190, 92, 0.28), transparent 60%),
+    radial-gradient(500px 500px at 80% 90%, rgba(27, 166, 166, 0.2), transparent 55%),
+    linear-gradient(180deg, #fff8f2 0%, #ffffff 55%, #fff2e6 100%);
+}
+
+.tropical-grid {
+  background-image: radial-gradient(rgba(31, 26, 22, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 20px 60px rgba(31, 26, 22, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes rise {
+  0% { opacity: 0; transform: translateY(18px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-rise {
+  animation: rise 0.8s ease-out both;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-rise {
+    animation: none;
+  }
 }
