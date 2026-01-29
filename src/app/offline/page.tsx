@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { WifiOff } from "lucide-react";
 
 export default function OfflinePage() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4 bg-sand-50">
       <div className="max-w-xl text-center bg-white rounded-3xl p-10 border border-sand-100 shadow-sm">
-        <div className="text-6xl mb-6">🌺</div>
+        <div className="w-16 h-16 bg-coral-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+          <WifiOff className="h-8 w-8 text-coral-600" aria-hidden="true" />
+        </div>
         <h1 className="font-display text-3xl font-bold text-gray-900 mb-4">
           You&apos;re offline
         </h1>

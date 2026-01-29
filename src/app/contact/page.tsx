@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Mail, Phone, MapPin, Instagram, Send, Clock, ArrowRight, Flame, Heart, TreePalm, PartyPopper, Flower2 } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Send, Clock, Flame, Heart, TreePalm, PartyPopper, Flower2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   AnimatedSection,
@@ -66,7 +66,9 @@ export default function ContactPage() {
     return (
       <div className="min-h-[60vh] flex items-center justify-center px-4 bg-sand-50">
         <div className="text-center max-w-md bg-white rounded-3xl p-10 border border-sand-100">
-          <div className="text-6xl mb-6">💃</div>
+          <div className="w-16 h-16 bg-coral-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <PartyPopper className="h-8 w-8 text-coral-600" aria-hidden="true" />
+          </div>
           <h1 className="font-display text-3xl font-bold text-gray-900 mb-4">
             ¡Gracias! Message Received
           </h1>
@@ -115,7 +117,7 @@ export default function ContactPage() {
                 { name: "Bolero Son", icon: Flower2, color: "text-rose-500" },
               ].map((style) => (
                 <span key={style.name} className="inline-flex items-center gap-1.5 text-sm bg-white/80 px-3 py-1.5 rounded-full font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow">
-                  <style.icon className={`h-4 w-4 ${style.color}`} />
+                  <style.icon className={`h-4 w-4 ${style.color}`} aria-hidden="true" />
                   {style.name}
                 </span>
               ))}
@@ -136,7 +138,7 @@ export default function ContactPage() {
                 <StaggerItem>
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 bg-coral-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Mail className="h-5 w-5 text-coral-600" />
+                      <Mail className="h-5 w-5 text-coral-600" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
@@ -148,7 +150,7 @@ export default function ContactPage() {
                 <StaggerItem>
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 bg-coral-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Phone className="h-5 w-5 text-coral-600" />
+                      <Phone className="h-5 w-5 text-coral-600" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Phone/Text</h3>
@@ -160,7 +162,7 @@ export default function ContactPage() {
                 <StaggerItem>
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 bg-coral-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Instagram className="h-5 w-5 text-coral-600" />
+                      <Instagram className="h-5 w-5 text-coral-600" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Instagram</h3>
@@ -179,7 +181,7 @@ export default function ContactPage() {
                 <StaggerItem>
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 bg-coral-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <MapPin className="h-5 w-5 text-coral-600" />
+                      <MapPin className="h-5 w-5 text-coral-600" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Locations</h3>
@@ -192,7 +194,7 @@ export default function ContactPage() {
 
                 <StaggerItem>
                   <div className="bg-sand-50 rounded-2xl p-4 border border-sand-100 flex items-start gap-3">
-                    <Clock className="h-5 w-5 text-coral-600 flex-shrink-0 mt-0.5" />
+                    <Clock className="h-5 w-5 text-coral-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-2">Response Time</h3>
                       <p className="text-gray-600 text-sm">
@@ -215,7 +217,9 @@ export default function ContactPage() {
                     <input
                       type="text"
                       id="name"
+                      name="name"
                       required
+                      autoComplete="name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-4 py-3 rounded-2xl border border-sand-100 focus:ring-2 focus:ring-coral-500 focus:border-coral-500 outline-none transition-colors"
@@ -230,7 +234,9 @@ export default function ContactPage() {
                     <input
                       type="email"
                       id="email"
+                      name="email"
                       required
+                      autoComplete="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-3 rounded-2xl border border-sand-100 focus:ring-2 focus:ring-coral-500 focus:border-coral-500 outline-none transition-colors"
@@ -246,6 +252,9 @@ export default function ContactPage() {
                   <input
                     type="tel"
                     id="phone"
+                    name="phone"
+                    autoComplete="tel"
+                    inputMode="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-3 rounded-2xl border border-sand-100 focus:ring-2 focus:ring-coral-500 focus:border-coral-500 outline-none transition-colors"
@@ -259,12 +268,14 @@ export default function ContactPage() {
                   </label>
                   <select
                     id="danceStyle"
+                    name="danceStyle"
                     required
+                    autoComplete="off"
                     value={formData.danceStyle}
                     onChange={(e) => setFormData({ ...formData, danceStyle: e.target.value })}
                     className="w-full px-4 py-3 rounded-2xl border border-sand-100 focus:ring-2 focus:ring-coral-500 focus:border-coral-500 outline-none transition-colors bg-white"
                   >
-                    <option value="">Select a dance style...</option>
+                    <option value="">Select a dance style…</option>
                     {danceStyles.map((style) => (
                       <option key={style} value={style}>
                         {style}
@@ -279,12 +290,14 @@ export default function ContactPage() {
                   </label>
                   <select
                     id="service"
+                    name="service"
                     required
+                    autoComplete="off"
                     value={formData.service}
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     className="w-full px-4 py-3 rounded-2xl border border-sand-100 focus:ring-2 focus:ring-coral-500 focus:border-coral-500 outline-none transition-colors bg-white"
                   >
-                    <option value="">Select a service...</option>
+                    <option value="">Select a service…</option>
                     {services.map((service) => (
                       <option key={service} value={service}>
                         {service}
@@ -299,12 +312,14 @@ export default function ContactPage() {
                   </label>
                   <select
                     id="location"
+                    name="location"
                     required
+                    autoComplete="off"
                     value={formData.location}
                     onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                     className="w-full px-4 py-3 rounded-2xl border border-sand-100 focus:ring-2 focus:ring-coral-500 focus:border-coral-500 outline-none transition-colors bg-white"
                   >
-                    <option value="">Select a location...</option>
+                    <option value="">Select a location…</option>
                     {locations.map((location) => (
                       <option key={location} value={location}>
                         {location}
@@ -319,11 +334,13 @@ export default function ContactPage() {
                   </label>
                   <select
                     id="experience"
+                    name="experience"
+                    autoComplete="off"
                     value={formData.experience}
                     onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
                     className="w-full px-4 py-3 rounded-2xl border border-sand-100 focus:ring-2 focus:ring-coral-500 focus:border-coral-500 outline-none transition-colors bg-white"
                   >
-                    <option value="">Select your level...</option>
+                    <option value="">Select your level…</option>
                     <option value="none">Complete beginner - never danced</option>
                     <option value="some">Some experience - took a few classes</option>
                     <option value="social">Social dancer - go out dancing sometimes</option>
@@ -337,7 +354,9 @@ export default function ContactPage() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={4}
+                    autoComplete="off"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full px-4 py-3 rounded-2xl border border-sand-100 focus:ring-2 focus:ring-coral-500 focus:border-coral-500 outline-none transition-colors resize-none"
@@ -356,7 +375,7 @@ export default function ContactPage() {
                   ) : (
                     <>
                       Send Message
-                      <Send className="ml-2 h-5 w-5" />
+                      <Send className="ml-2 h-5 w-5" aria-hidden="true" />
                     </>
                   )}
                 </Button>
@@ -387,7 +406,7 @@ export default function ContactPage() {
               <StaggerItem key={location}>
                 <div className="bg-white rounded-xl p-4 border border-sand-100 hover:shadow-lg hover:-translate-y-1 transition-all">
                   <div className="w-10 h-10 bg-coral-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                    <MapPin className="h-5 w-5 text-coral-600" />
+                    <MapPin className="h-5 w-5 text-coral-600" aria-hidden="true" />
                   </div>
                   <p className="font-medium text-gray-900">{location}</p>
                 </div>

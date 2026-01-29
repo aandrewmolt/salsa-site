@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Check, ArrowRight, Sparkles, Users, Star, Gift, Flame, Heart, TreePalm, PartyPopper, Flower2 } from "lucide-react";
+import { Check, ArrowRight, Star, Flame, Heart, TreePalm, PartyPopper, Flower2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   AnimatedSection,

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Sparkles, Users, Music, Heart, Flame, ArrowRight, Check, HelpCircle, TreePalm, PartyPopper, Flower2, Target, UserPlus, GraduationCap } from "lucide-react";
+import { Sparkles, Users, Heart, Flame, ArrowRight, Check, HelpCircle, TreePalm, PartyPopper, Flower2, Target, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   AnimatedSection,
@@ -9,8 +9,6 @@ import {
   StaggerItem,
   HeroEntrance,
   Floating,
-  fadeInLeft,
-  fadeInRight,
 } from "@/lib/motion";
 
 

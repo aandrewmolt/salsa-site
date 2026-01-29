@@ -26,7 +26,7 @@ export default function AboutPage() {
             <AnimatedSection variants={fadeInLeft}>
               <HeroEntrance>
                 <div className="inline-flex items-center gap-2 bg-white/80 text-coral-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                  <Globe className="h-4 w-4" />
+                  <Globe className="h-4 w-4" aria-hidden="true" />
                   Born & Raised in Colombia
                 </div>
               </HeroEntrance>
@@ -51,7 +51,7 @@ export default function AboutPage() {
                     { name: "Bolero Son", icon: Flower2 },
                   ].map((style) => (
                     <span key={style.name} className="inline-flex items-center gap-1.5 text-xs bg-coral-100 text-coral-700 px-3 py-1 rounded-full font-medium hover:bg-coral-200 transition-colors">
-                      <style.icon className="h-3 w-3" />
+                      <style.icon className="h-3 w-3" aria-hidden="true" />
                       {style.name}
                     </span>
                   ))}
@@ -65,9 +65,9 @@ export default function AboutPage() {
                     <div className="aspect-square rounded-[18px] bg-white/80 flex items-center justify-center text-center border border-white/60">
                       <div className="space-y-3">
                         <div className="w-20 h-20 bg-coral-100 rounded-2xl flex items-center justify-center mx-auto">
-                          <Music className="h-10 w-10 text-coral-600" />
+                          <Music className="h-10 w-10 text-coral-600" aria-hidden="true" />
                         </div>
-                        <p className="text-sm font-semibold text-gray-700">Instructor photo here</p>
+                        <p className="text-sm font-semibold text-gray-700">Instructor portrait</p>
                       </div>
                     </div>
                   </div>
@@ -75,7 +75,7 @@ export default function AboutPage() {
                 <Floating className="absolute -bottom-4 -right-4" duration={5} distance={8}>
                   <div className="bg-white rounded-2xl px-4 py-3 shadow-lg">
                     <p className="font-display text-coral-600 flex items-center gap-2">
-                      <Award className="h-4 w-4" />
+                      <Award className="h-4 w-4" aria-hidden="true" />
                       10+ years
                     </p>
                     <p className="text-gray-600 text-sm">teaching experience</p>
@@ -152,7 +152,7 @@ export default function AboutPage() {
                 icon: Users,
                 bg: "bg-teal-500",
               },
-            ].map((item, index) => (
+            ].map((item) => (
               <StaggerItem key={item.title}>
                 <div className="bg-white rounded-2xl p-6 flex gap-4 border border-sand-100 hover:shadow-lg transition-shadow">
                   <div className={`w-12 h-12 ${item.bg} text-white rounded-full flex items-center justify-center flex-shrink-0`}>

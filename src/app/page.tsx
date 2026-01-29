@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Star, Check, ArrowRight, Music, Flame, Heart, TreePalm, PartyPopper, Flower2, Sparkles, Users } from "lucide-react";
+import { Star, Check, ArrowRight, Music, Flame, Heart, TreePalm, PartyPopper, Flower2, Sparkles, Users, Flag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   AnimatedSection,
@@ -34,7 +34,8 @@ export default function Home() {
             <div className="space-y-7">
               <HeroEntrance>
                 <div className="inline-flex items-center gap-2 bg-white/70 text-coral-700 px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
-                  🇨🇴 Latin Dance for Women in Houston
+                  <Flag className="h-4 w-4" aria-hidden="true" />
+                  Colombian-born instructor in Houston
                   <span className="inline-flex h-2 w-2 rounded-full bg-teal-500 animate-pulse" />
                 </div>
               </HeroEntrance>
@@ -59,7 +60,7 @@ export default function Home() {
                       key={style.name}
                       className="inline-flex items-center gap-1.5 bg-white/80 px-3 py-1.5 rounded-full text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow"
                     >
-                      <style.icon className={`h-4 w-4 ${style.color}`} />
+                      <style.icon className={`h-4 w-4 ${style.color}`} aria-hidden="true" />
                       {style.name}
                     </span>
                   ))}
@@ -117,11 +118,11 @@ export default function Home() {
                     <div className="aspect-[4/5] rounded-[18px] bg-white/80 border border-white/60 flex items-center justify-center text-center">
                       <div className="space-y-3">
                         <div className="w-16 h-16 bg-coral-100 rounded-2xl flex items-center justify-center mx-auto">
-                          <Music className="h-8 w-8 text-coral-600" />
+                          <Music className="h-8 w-8 text-coral-600" aria-hidden="true" />
                         </div>
-                        <p className="text-sm font-semibold text-gray-700">Add a 30s teaching reel here</p>
+                        <p className="text-sm font-semibold text-gray-700">Signature teaching reel</p>
                         <div className="inline-flex items-center gap-2 text-xs text-gray-500">
-                          <Flame className="h-3 w-3 text-coral-500" />
+                          <Flame className="h-3 w-3 text-coral-500" aria-hidden="true" />
                           Salsa • Bachata • Cumbia
                         </div>
                       </div>
@@ -185,7 +186,7 @@ export default function Home() {
               <StaggerItem key={style.name}>
                 <div className="bg-sand-50 rounded-2xl p-5 text-center border border-sand-100 hover:shadow-lg hover:-translate-y-1 transition-all h-full">
                   <div className={`w-12 h-12 ${style.color} rounded-xl flex items-center justify-center mx-auto mb-3`}>
-                    <style.icon className="h-6 w-6 text-white" />
+                    <style.icon className="h-6 w-6 text-white" aria-hidden="true" />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1">{style.name}</h3>
                   <p className="text-xs text-gray-600">{style.desc}</p>

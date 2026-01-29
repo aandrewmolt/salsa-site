@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-9 h-9 bg-coral-600 rounded-xl flex items-center justify-center">
-                <Music className="h-5 w-5 text-white" />
+                <Music className="h-5 w-5 text-white" aria-hidden="true" />
               </div>
               <span className="font-display text-xl">Latin Dance for Women</span>
             </div>
@@ -27,13 +27,13 @@ export default function Footer() {
                 { name: "Bolero Son", icon: Flower2 },
               ].map((style) => (
                 <span key={style.name} className="inline-flex items-center gap-1 text-xs bg-white/10 px-2 py-1 rounded-full">
-                  <style.icon className="h-3 w-3" />
+                  <style.icon className="h-3 w-3" aria-hidden="true" />
                   {style.name}
                 </span>
               ))}
             </div>
             <p className="text-mango-400 font-medium flex items-center gap-2">
-              <Heart className="h-4 w-4 fill-current" />
+              <Heart className="h-4 w-4 fill-current" aria-hidden="true" />
               Confidence starts in your feet.
             </p>
           </div>
@@ -68,7 +68,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-              <MapPin className="h-4 w-4" />
+              <MapPin className="h-4 w-4" aria-hidden="true" />
               Locations
             </h3>
             <p className="text-gray-300 mb-2">
@@ -87,7 +87,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-mango-400 hover:text-mango-200 transition-colors"
               >
-                <Instagram className="h-5 w-5" />
+                <Instagram className="h-5 w-5" aria-hidden="true" />
                 Follow on Instagram
               </a>
             </div>
