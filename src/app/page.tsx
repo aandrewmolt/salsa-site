@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Star, Check, ArrowRight } from "lucide-react";
+import { Star, Check, ArrowRight, Music } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   AnimatedSection,
@@ -10,6 +10,14 @@ import {
   fadeInLeft,
   fadeInRight,
 } from "@/lib/motion";
+
+const danceStyles = [
+  { name: "Salsa", emoji: "🔥" },
+  { name: "Bachata", emoji: "💕" },
+  { name: "Cumbia", emoji: "🌴" },
+  { name: "Merengue", emoji: "🎉" },
+  { name: "Bolero Son", emoji: "🌹" },
+];
 
 export default function Home() {
   return (
@@ -26,22 +34,36 @@ export default function Home() {
             <div className="space-y-7">
               <HeroEntrance>
                 <div className="inline-flex items-center gap-2 bg-white/70 text-coral-700 px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
-                  🇨🇴 Colombian Salsa for Women in Houston
+                  🇨🇴 Latin Dance for Women in Houston
                   <span className="inline-flex h-2 w-2 rounded-full bg-teal-500 animate-pulse" />
                 </div>
               </HeroEntrance>
 
               <HeroEntrance delay={0.1}>
                 <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-[1.05]">
-                  Women&apos;s Salsa Lessons in Houston — Taught by a Colombian Instructor
+                  Latin Dance Lessons for Women — Taught by a Colombian Instructor
                 </h1>
               </HeroEntrance>
 
               <HeroEntrance delay={0.2}>
                 <p className="text-lg md:text-xl text-gray-700 max-w-xl">
-                  Learn authentic salsa with a supportive, women-centered approach. Build
+                  Learn salsa, bachata, cumbia, merengue & bolero son with a supportive, women-centered approach. Build
                   confidence, technique, and style—<span className="font-semibold text-coral-700">no partner needed</span>.
                 </p>
+              </HeroEntrance>
+
+              <HeroEntrance delay={0.25}>
+                <div className="flex flex-wrap gap-2">
+                  {danceStyles.map((style) => (
+                    <span
+                      key={style.name}
+                      className="inline-flex items-center gap-1.5 bg-white/80 px-3 py-1.5 rounded-full text-sm font-medium text-gray-700 shadow-sm"
+                    >
+                      <span>{style.emoji}</span>
+                      {style.name}
+                    </span>
+                  ))}
+                </div>
               </HeroEntrance>
 
               <HeroEntrance delay={0.3}>
@@ -71,7 +93,7 @@ export default function Home() {
                 <div className="flex flex-wrap gap-3 text-sm font-semibold text-gray-700">
                   <span className="px-3 py-1 rounded-full bg-white/70">Beginner friendly</span>
                   <span className="px-3 py-1 rounded-full bg-white/70">Bilingual (EN/ES)</span>
-                  <span className="px-3 py-1 rounded-full bg-white/70">Pop-up studios</span>
+                  <span className="px-3 py-1 rounded-full bg-white/70">5 dance styles</span>
                 </div>
               </HeroEntrance>
 
@@ -98,7 +120,7 @@ export default function Home() {
                         <p className="text-sm font-semibold text-gray-700">Add a 30s teaching reel here</p>
                         <div className="inline-flex items-center gap-2 text-xs text-gray-500">
                           <span className="h-2 w-2 rounded-full bg-coral-500" />
-                          Footwork • Styling • Musicality
+                          Salsa • Bachata • Cumbia
                         </div>
                       </div>
                     </div>
@@ -106,8 +128,8 @@ export default function Home() {
 
                   <Floating className="absolute -left-6 bottom-8" duration={5} distance={8}>
                     <div className="bg-white rounded-2xl px-4 py-3 shadow-lg">
-                      <p className="text-xs uppercase tracking-[0.2em] text-gray-500">Signature Focus</p>
-                      <p className="font-semibold text-gray-900">Ladies Styling + Shines</p>
+                      <p className="text-xs uppercase tracking-[0.2em] text-gray-500">Dance Styles</p>
+                      <p className="font-semibold text-gray-900">5 Latin Rhythms</p>
                     </div>
                   </Floating>
 
@@ -126,7 +148,7 @@ export default function Home() {
             {[
               { value: "10+ yrs", label: "Teaching experience" },
               { value: "500+", label: "Women taught" },
-              { value: "Women-only", label: "Supportive space" },
+              { value: "5 styles", label: "Latin rhythms" },
               { value: "Colombian", label: "Authentic sabor" },
             ].map((stat) => (
               <StaggerItem key={stat.label}>
@@ -140,8 +162,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Dance Styles Section */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection className="text-center mb-10">
+            <p className="text-sm uppercase tracking-[0.25em] text-coral-600 mb-3">What You&apos;ll Learn</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Five authentic Latin dance styles
+            </h2>
+          </AnimatedSection>
+
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-5 gap-4" staggerDelay={0.1}>
+            {[
+              { name: "Salsa", emoji: "🔥", desc: "Fast footwork & Colombian flavor" },
+              { name: "Bachata", emoji: "💕", desc: "Sensual Dominican rhythm" },
+              { name: "Cumbia", emoji: "🌴", desc: "Joyful Colombian folk dance" },
+              { name: "Merengue", emoji: "🎉", desc: "Energetic & easy to learn" },
+              { name: "Bolero Son", emoji: "🌹", desc: "Romantic & elegant" },
+            ].map((style) => (
+              <StaggerItem key={style.name}>
+                <div className="bg-sand-50 rounded-2xl p-5 text-center border border-sand-100 hover:shadow-lg transition-shadow h-full">
+                  <span className="text-3xl block mb-2">{style.emoji}</span>
+                  <h3 className="font-bold text-gray-900 mb-1">{style.name}</h3>
+                  <p className="text-xs text-gray-600">{style.desc}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
       {/* Benefits Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-sand-50">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-12">
             <p className="text-sm uppercase tracking-[0.25em] text-coral-600 mb-3">Why Women Choose Us</p>
@@ -158,21 +210,21 @@ export default function Home() {
               {
                 icon: "🌟",
                 bg: "bg-coral-500",
-                cardBg: "bg-sand-50",
+                cardBg: "bg-white",
                 title: "Beginner-friendly — you don't need experience",
-                desc: "Start from zero with a structured plan, supportive coaching, and clear progress you can feel each week.",
+                desc: "Start from zero with any style. Structured plans, supportive coaching, and clear progress you can feel each week.",
               },
               {
                 icon: "👠",
                 bg: "bg-mango-400",
                 cardBg: "bg-white",
                 title: "Footwork, turns, musicality + ladies styling",
-                desc: "Shines, spins, body movement, and musicality taught the Colombian way—fast, elegant, and joyful.",
+                desc: "From salsa shines to bachata sensual—learn the authentic techniques of each rhythm the Colombian way.",
               },
               {
                 icon: "👯‍♀️",
                 bg: "bg-teal-500",
-                cardBg: "bg-sand-50",
+                cardBg: "bg-white",
                 title: "Private lessons + small women-only group classes",
                 desc: "Build skill and confidence without pressure. Learn at your pace in a space designed for women.",
               },
@@ -192,7 +244,7 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 px-4 bg-sand-50">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-12">
             <p className="text-sm uppercase tracking-[0.25em] text-coral-600 mb-3">How It Works</p>
@@ -200,7 +252,7 @@ export default function Home() {
               Three simple steps to your first dance night
             </h2>
             <p className="text-gray-600 text-lg">
-              Pick your path, pick your location, and show up ready to move.
+              Pick your style, pick your location, and show up ready to move.
             </p>
           </AnimatedSection>
 
@@ -209,8 +261,8 @@ export default function Home() {
               {
                 num: 1,
                 bg: "bg-coral-500",
-                title: "Pick private or group",
-                desc: "Choose a one-on-one lesson, semi-private with friends, or a women's series.",
+                title: "Pick your style & format",
+                desc: "Choose salsa, bachata, cumbia, merengue, or bolero son. Private, semi-private, or group.",
               },
               {
                 num: 2,
@@ -226,7 +278,7 @@ export default function Home() {
               },
             ].map((step) => (
               <StaggerItem key={step.num}>
-                <div className="bg-white rounded-2xl p-8 border border-sand-100 hover:shadow-lg transition-shadow h-full">
+                <div className="bg-sand-50 rounded-2xl p-8 border border-sand-100 hover:shadow-lg transition-shadow h-full">
                   <div className={`w-12 h-12 ${step.bg} text-white rounded-full flex items-center justify-center mb-4 text-lg font-bold`}>
                     {step.num}
                   </div>
@@ -240,7 +292,7 @@ export default function Home() {
       </section>
 
       {/* Signature Focus */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-sand-50">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
             <AnimatedSection variants={fadeInLeft}>
@@ -250,7 +302,7 @@ export default function Home() {
               </h2>
               <p className="text-gray-600 text-lg mb-6">
                 We blend authentic Colombian technique with a women-centered coaching style. Expect fast footwork,
-                fluid styling, and a training plan that keeps you progressing week by week.
+                fluid styling, and a training plan that keeps you progressing week by week—across all five rhythms.
               </p>
               <StaggerContainer className="grid sm:grid-cols-2 gap-4" staggerDelay={0.08}>
                 {[
@@ -262,7 +314,7 @@ export default function Home() {
                   "Social dance confidence",
                 ].map((item) => (
                   <StaggerItem key={item}>
-                    <div className="flex items-center gap-3 bg-sand-50 rounded-xl px-4 py-3">
+                    <div className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 border border-sand-100">
                       <Check className="h-5 w-5 text-coral-600" />
                       <span className="text-gray-700 font-medium">{item}</span>
                     </div>
@@ -306,7 +358,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-4 bg-sand-50">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-12">
             <p className="text-sm uppercase tracking-[0.25em] text-coral-600 mb-3">Testimonials</p>
@@ -319,25 +371,25 @@ export default function Home() {
             {[
               {
                 quote:
-                  "I finally went to a Latin night and actually danced. The lessons gave me the confidence I needed.",
+                  "I finally went to a Latin night and actually danced. The salsa and bachata lessons gave me the confidence I needed.",
                 name: "Sarah M.",
                 tag: "Medical Center Professional",
               },
               {
                 quote:
-                  "The women-only environment made all the difference—no pressure, just support and fun.",
+                  "The women-only environment made all the difference—no pressure, just support and fun learning cumbia!",
                 name: "Jessica L.",
                 tag: "New to Houston",
               },
               {
                 quote:
-                  "Learning from a Colombian instructor is incredible. You feel the authenticity in every move.",
+                  "Learning from a Colombian instructor is incredible. You feel the authenticity in every move, every rhythm.",
                 name: "Maria G.",
                 tag: "Latina Culture Lover",
               },
             ].map((testimonial) => (
               <StaggerItem key={testimonial.name}>
-                <div className="bg-white rounded-2xl p-8 shadow-sm border border-sand-100 hover:shadow-lg transition-shadow h-full">
+                <div className="bg-sand-50 rounded-2xl p-8 shadow-sm border border-sand-100 hover:shadow-lg transition-shadow h-full">
                   <div className="flex items-center mb-4 text-gold-500">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 fill-current" />
@@ -354,7 +406,7 @@ export default function Home() {
       </section>
 
       {/* Pricing Preview */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-sand-50">
         <div className="max-w-5xl mx-auto">
           <AnimatedSection>
             <div className="rounded-[28px] bg-gradient-to-r from-coral-600 via-coral-500 to-mango-400 p-1">
@@ -396,7 +448,7 @@ export default function Home() {
             Ready to feel confident on the dance floor?
           </h2>
           <p className="text-gray-300 text-lg mb-8">
-            Book your intro lesson today and start dancing with confidence—no experience needed.
+            Book your intro lesson today and start dancing salsa, bachata, cumbia, merengue, or bolero son—no experience needed.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

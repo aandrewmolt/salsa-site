@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, MapPin, Heart } from "lucide-react";
+import { Instagram, MapPin, Heart, Music } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -10,12 +10,19 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <span className="text-2xl">💃</span>
-              <span className="font-display text-xl">Salsa for Women</span>
+              <span className="font-display text-xl">Latin Dance for Women</span>
             </div>
             <p className="text-gray-300 mb-4">
-              Colombian-born salsa instructor in Houston helping women feel confident,
+              Colombian-born instructor in Houston helping women feel confident,
               feminine, and free on the dance floor—no partner needed.
             </p>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {["Salsa", "Bachata", "Cumbia", "Merengue", "Bolero Son"].map((style) => (
+                <span key={style} className="text-xs bg-white/10 px-2 py-1 rounded-full">
+                  {style}
+                </span>
+              ))}
+            </div>
             <p className="text-mango-400 font-medium flex items-center gap-2">
               <Heart className="h-4 w-4 fill-current" />
               Confidence starts in your feet.
@@ -79,7 +86,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 mt-8 pt-8 text-center text-gray-400">
-          <p>© {new Date().getFullYear()} Salsa for Women Houston. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Latin Dance for Women Houston. All rights reserved.</p>
           <p className="mt-2 text-sm">
             Serving women across Houston, TX | Bilingual instruction available (English/Spanish)
           </p>

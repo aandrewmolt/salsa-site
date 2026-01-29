@@ -2,10 +2,18 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services | Salsa for Women Houston",
+  title: "Services | Latin Dance for Women Houston",
   description:
-    "Private salsa lessons, semi-private sessions, group classes, and ladies styling workshops for women in Houston. No partner needed.",
+    "Private Latin dance lessons, semi-private sessions, group classes, and ladies styling workshops for women in Houston. Salsa, bachata, cumbia, merengue & bolero son. No partner needed.",
 };
+
+const danceStyles = [
+  { name: "Salsa", emoji: "🔥", desc: "Fast footwork, shines, Colombian caleña style" },
+  { name: "Bachata", emoji: "💕", desc: "Sensual Dominican rhythm, body movement" },
+  { name: "Cumbia", emoji: "🌴", desc: "Joyful Colombian folk dance, easy to learn" },
+  { name: "Merengue", emoji: "🎉", desc: "Energetic, great for beginners" },
+  { name: "Bolero Son", emoji: "🌹", desc: "Romantic, elegant, slower tempo" },
+];
 
 const services = [
   {
@@ -13,12 +21,12 @@ const services = [
     emoji: "🎯",
     whoFor: "Women wanting personalized attention and fast progress",
     description:
-      "One-on-one instruction tailored to your goals. Ideal for beginners or dancers who want faster, focused growth.",
+      "One-on-one instruction tailored to your goals. Choose any style or mix multiple rhythms. Ideal for beginners or dancers who want faster, focused growth.",
     learns: [
-      "Custom curriculum based on your goals",
+      "Custom curriculum for any dance style",
       "Footwork fundamentals & advanced patterns",
       "Ladies styling and arm movements",
-      "Musicality and timing",
+      "Musicality and timing for each rhythm",
       "Spins and turn techniques",
     ],
     pricing: "$79 intro / $110 standard",
@@ -30,7 +38,7 @@ const services = [
     emoji: "👯‍♀️",
     whoFor: "Friends who want to learn together",
     description:
-      "Bring your bestie, sister, or colleague. Same quality as privates with a shared, fun experience.",
+      "Bring your bestie, sister, or colleague. Learn salsa, bachata, or any style with the same quality as privates in a shared, fun experience.",
     learns: [
       "Same quality instruction as privates",
       "Shared learning experience",
@@ -46,7 +54,7 @@ const services = [
     emoji: "💃",
     whoFor: "Women wanting community + weekly structure",
     description:
-      "Progressive 4–6 week series with the same group each week. Build friendships while building skill.",
+      "Progressive 4–6 week series focused on one style. Build friendships while building skill in salsa, bachata, cumbia, or merengue.",
     learns: [
       "Progressive curriculum over weeks",
       "Community of like-minded women",
@@ -62,7 +70,7 @@ const services = [
     emoji: "✨",
     whoFor: "Any level wanting to add polish and feminine movement",
     description:
-      "A focused workshop on the art of feminine expression in salsa. Add that extra 'sabor' to your movement.",
+      "A focused workshop on the art of feminine expression across all Latin dance styles. Add that extra 'sabor' to your movement.",
     learns: [
       "Arm styling and hand movements",
       "Body isolations and waves",
@@ -80,6 +88,11 @@ const faqs = [
     question: "Do I need a partner?",
     answer:
       "No! All classes are designed for women learning independently. For partner basics, women practice with each other or learn both roles.",
+  },
+  {
+    question: "Which dance style should I start with?",
+    answer:
+      "For absolute beginners, merengue is the easiest. Salsa and bachata are the most popular. We'll help you choose based on your goals in your intro lesson.",
   },
   {
     question: "I'm a total beginner—will I look awkward?",
@@ -110,14 +123,46 @@ export default function ServicesPage() {
           <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Choose your perfect way to learn
           </h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-            From private one-on-one lessons to energizing group classes, find the best fit for your goals.
+          <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-8">
+            From private one-on-one lessons to energizing group classes, find the best fit for your goals—across all five Latin rhythms.
           </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {danceStyles.map((style) => (
+              <span
+                key={style.name}
+                className="inline-flex items-center gap-1.5 bg-white/80 px-3 py-1.5 rounded-full text-sm font-medium text-gray-700 shadow-sm"
+              >
+                <span>{style.emoji}</span>
+                {style.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Dance Styles Grid */}
+      <section className="py-12 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-display text-2xl font-bold text-gray-900 mb-6 text-center">
+            Dance Styles We Teach
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {danceStyles.map((style) => (
+              <div
+                key={style.name}
+                className="bg-sand-50 rounded-2xl p-4 text-center border border-sand-100"
+              >
+                <span className="text-2xl block mb-2">{style.emoji}</span>
+                <h3 className="font-bold text-gray-900 text-sm mb-1">{style.name}</h3>
+                <p className="text-xs text-gray-600">{style.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 bg-sand-50">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8">
             {services.map((service) => (
@@ -126,7 +171,7 @@ export default function ServicesPage() {
                 className={`rounded-3xl p-8 border transition-transform hover:-translate-y-1 ${
                   service.highlight
                     ? "bg-gradient-to-br from-coral-600 to-mango-400 text-white border-transparent shadow-xl"
-                    : "bg-sand-50 border-sand-100 shadow-sm"
+                    : "bg-white border-sand-100 shadow-sm"
                 }`}
               >
                 <div className="flex items-center gap-3 mb-4">
@@ -182,19 +227,19 @@ export default function ServicesPage() {
       </section>
 
       {/* Add-ons */}
-      <section className="py-16 px-4 bg-sand-50">
+      <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
             Special Add-ons
           </h2>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl p-6 border border-sand-100">
+            <div className="bg-sand-50 rounded-2xl p-6 border border-sand-100">
               <h3 className="font-bold text-lg text-gray-900 mb-2">Social Night Prep — $25</h3>
               <p className="text-gray-600">
                 Learn social etiquette, how to ask/decline dances, and how to feel confident walking into Latin nights.
               </p>
             </div>
-            <div className="bg-white rounded-2xl p-6 border border-sand-100">
+            <div className="bg-sand-50 rounded-2xl p-6 border border-sand-100">
               <h3 className="font-bold text-lg text-gray-900 mb-2">In-Home Private — $140–175</h3>
               <p className="text-gray-600">
                 Prefer learning at home? I&apos;ll come to you—ideal for busy schedules and private settings.
@@ -205,14 +250,14 @@ export default function ServicesPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 bg-sand-50">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
             Frequently Asked Questions
           </h2>
           <div className="space-y-6">
             {faqs.map((faq) => (
-              <div key={faq.question} className="border-b border-sand-100 pb-6">
+              <div key={faq.question} className="bg-white border border-sand-100 rounded-2xl p-6">
                 <h3 className="font-bold text-lg text-gray-900 mb-2">{faq.question}</h3>
                 <p className="text-gray-600">{faq.answer}</p>
               </div>
@@ -228,7 +273,7 @@ export default function ServicesPage() {
             Not sure which service fits?
           </h2>
           <p className="text-gray-300 text-lg mb-8">
-            Book an intro lesson and we&apos;ll tailor a plan around your goals and schedule.
+            Book an intro lesson and we&apos;ll tailor a plan around your goals, preferred style, and schedule.
           </p>
           <Link
             href="/contact"

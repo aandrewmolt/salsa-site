@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pricing | Salsa for Women Houston",
+  title: "Pricing | Latin Dance for Women Houston",
   description:
-    "Transparent pricing for private salsa lessons, group classes, and workshops in Houston. Packages available. No hidden fees.",
+    "Transparent pricing for private Latin dance lessons, group classes, and workshops in Houston. Salsa, bachata, cumbia, merengue & bolero son. Packages available. No hidden fees.",
 };
 
 export default function PricingPage() {
@@ -17,9 +17,16 @@ export default function PricingPage() {
           <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Simple, transparent pricing
           </h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-            All prices include studio rental. Packages expire in 4 months.
+          <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-6">
+            All prices include studio rental. Packages expire in 4 months. Learn any style—salsa, bachata, cumbia, merengue, or bolero son.
           </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {["🔥 Salsa", "💕 Bachata", "🌴 Cumbia", "🎉 Merengue", "🌹 Bolero Son"].map((style) => (
+              <span key={style} className="text-sm bg-white/80 px-3 py-1.5 rounded-full font-medium text-gray-700 shadow-sm">
+                {style}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -32,7 +39,7 @@ export default function PricingPage() {
 
           <div className="rounded-3xl overflow-hidden border border-sand-100 shadow-sm">
             <div className="bg-gradient-to-r from-coral-600 to-mango-400 text-white px-6 py-4">
-              <p className="font-semibold text-lg">Personalized coaching for fast progress</p>
+              <p className="font-semibold text-lg">Personalized coaching for fast progress—any dance style</p>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full">
@@ -92,7 +99,7 @@ export default function PricingPage() {
           </div>
 
           <p className="text-center text-gray-500 mt-4 text-sm">
-            * Packages expire 4 months from purchase date
+            * Packages expire 4 months from purchase date. Mix styles across lessons!
           </p>
         </div>
       </section>
@@ -131,7 +138,7 @@ export default function PricingPage() {
           </div>
 
           <p className="text-center text-gray-600 mt-6">
-            Perfect for friends, sisters, or coworkers who want to learn together!
+            Perfect for friends, sisters, or coworkers who want to learn salsa, bachata, or any style together!
           </p>
         </div>
       </section>
@@ -169,6 +176,10 @@ export default function PricingPage() {
               <p className="text-gray-500 text-xs mt-2">$21.50/class</p>
             </div>
           </div>
+
+          <p className="text-center text-gray-600 mt-6 text-sm">
+            Group series available for salsa, bachata, cumbia, and merengue. Check schedule for current offerings.
+          </p>
         </div>
       </section>
 
@@ -192,7 +203,7 @@ export default function PricingPage() {
                   <tr>
                     <td className="px-6 py-4">
                       <span className="font-medium text-gray-900">Ladies Styling Workshop</span>
-                      <span className="block text-sm text-gray-500">Arm styling, body movement, feminine expression</span>
+                      <span className="block text-sm text-gray-500">Arm styling, body movement, feminine expression—all styles</span>
                     </td>
                     <td className="px-6 py-4 font-bold text-gray-900">$35</td>
                   </tr>
@@ -259,7 +270,7 @@ export default function PricingPage() {
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="font-display text-3xl font-bold mb-4">Ready to get started?</h2>
           <p className="text-gray-300 text-lg mb-8">
-            Book your intro lesson to experience the difference. No commitment—just see if it&apos;s right for you.
+            Book your intro lesson to experience the difference. Choose any style—salsa, bachata, cumbia, merengue, or bolero son.
           </p>
           <Link
             href="/contact"

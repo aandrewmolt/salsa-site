@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About | Salsa for Women Houston",
+  title: "About | Latin Dance for Women Houston",
   description:
-    "Meet your Colombian salsa instructor. Learn about the authentic, women-centered approach to salsa instruction in Houston.",
+    "Meet your Colombian dance instructor. Learn about the authentic, women-centered approach to Latin dance instruction in Houston—salsa, bachata, cumbia, merengue & bolero son.",
 };
 
 export default function AboutPage() {
@@ -19,12 +19,19 @@ export default function AboutPage() {
                 🇨🇴 Born & Raised in Colombia
               </div>
               <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-                Teaching salsa the way I learned it—with heart and soul
+                Teaching Latin dance the way I learned it—with heart and soul
               </h1>
-              <p className="text-xl text-gray-700">
-                I grew up surrounded by salsa in Colombia. The music, the movement, the joy—it&apos;s in my blood.
+              <p className="text-xl text-gray-700 mb-4">
+                I grew up surrounded by salsa, cumbia, and all the rhythms of Colombia. The music, the movement, the joy—it&apos;s in my blood.
                 Now I share that passion with women in Houston who want to feel that same magic.
               </p>
+              <div className="flex flex-wrap gap-2">
+                {["Salsa", "Bachata", "Cumbia", "Merengue", "Bolero Son"].map((style) => (
+                  <span key={style} className="text-xs bg-coral-100 text-coral-700 px-3 py-1 rounded-full font-medium">
+                    {style}
+                  </span>
+                ))}
+              </div>
             </div>
             <div className="relative">
               <div className="glass rounded-[28px] p-6">
@@ -50,23 +57,23 @@ export default function AboutPage() {
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
-            Why Colombian Salsa Matters
+            Why Learning from a Colombian Matters
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-sand-50 rounded-2xl p-8 border border-sand-100">
               <span className="text-4xl mb-4 block">🎵</span>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Real Technique, Real Sabor</h3>
               <p className="text-gray-600">
-                Colombian salsa (salsa caleña) is known for fast footwork, intricate patterns, and joyful energy.
-                When you learn from someone who grew up with it, you get the real feel—not a watered-down version.
+                Colombian salsa (salsa caleña) is known for fast footwork and joyful energy. Cumbia is in our blood.
+                When you learn from someone who grew up with these rhythms, you get the real feel—not a watered-down version.
               </p>
             </div>
             <div className="bg-sand-50 rounded-2xl p-8 border border-sand-100">
               <span className="text-4xl mb-4 block">💫</span>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Cultural Connection</h3>
               <p className="text-gray-600">
-                Salsa isn&apos;t just steps—it&apos;s a way of expressing joy, connecting with music, and honoring culture.
-                I share the spirit and story behind the dance, not just the moves.
+                Latin dance isn&apos;t just steps—it&apos;s a way of expressing joy, connecting with music, and honoring culture.
+                I share the spirit and story behind each rhythm, not just the moves.
               </p>
             </div>
           </div>
@@ -87,11 +94,11 @@ export default function AboutPage() {
               },
               {
                 title: "Technique + expression",
-                body: "Good technique is the foundation, but dancing is about feeling the music. I teach both.",
+                body: "Good technique is the foundation, but dancing is about feeling the music. I teach both—across salsa, bachata, cumbia, merengue, and bolero son.",
               },
               {
                 title: "Practical skills for social dancing",
-                body: "Everything I teach is designed to help you dance confidently at Latin nights and social events.",
+                body: "Everything I teach is designed to help you dance confidently at Latin nights and social events, in any rhythm.",
               },
             ].map((item, index) => (
               <div key={item.title} className="bg-white rounded-2xl p-6 flex gap-4 border border-sand-100">
@@ -116,12 +123,12 @@ export default function AboutPage() {
           </h2>
           <div className="bg-sand-50 rounded-2xl p-8 md:p-12 border border-sand-100">
             <p className="text-lg text-gray-700 mb-6">
-              Many women are curious about salsa but feel held back by common concerns:
+              Many women are curious about Latin dance but feel held back by common concerns:
             </p>
             <ul className="space-y-3 mb-8">
               {[
-                "I don&apos;t want to feel awkward dancing with strangers",
-                "I&apos;m worried about unwanted attention",
+                "I don't want to feel awkward dancing with strangers",
+                "I'm worried about unwanted attention",
                 "I want a comfortable space to learn without pressure",
                 "I want to focus on my own skills, not just following a partner",
               ].map((item) => (
@@ -133,7 +140,7 @@ export default function AboutPage() {
             </ul>
             <p className="text-lg text-gray-700">
               A women-centered environment removes these barriers. You can focus entirely on your growth,
-              build genuine friendships, and develop confidence that carries over to social dancing.
+              build genuine friendships, and develop confidence that carries over to social dancing—in any rhythm.
             </p>
           </div>
         </div>
@@ -143,11 +150,11 @@ export default function AboutPage() {
       <section className="py-16 px-4 bg-sand-50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-display text-3xl font-bold text-gray-900 mb-8">Background & Experience</h2>
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { label: "Years teaching", value: "10+" },
               { label: "Students taught", value: "500+" },
-              { label: "Colombian born", value: "🇨🇴" },
+              { label: "Dance styles", value: "5" },
               { label: "Languages", value: "2" },
             ].map((item) => (
               <div key={item.label} className="bg-white rounded-xl p-6 border border-sand-100">
@@ -164,7 +171,7 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="font-display text-3xl font-bold mb-4">Let&apos;s dance together</h2>
           <p className="text-gray-300 text-lg mb-8">
-            Book an intro lesson and let&apos;s see where the music takes us.
+            Book an intro lesson and let&apos;s see where the music takes us—salsa, bachata, cumbia, or all of them.
           </p>
           <Link
             href="/contact"

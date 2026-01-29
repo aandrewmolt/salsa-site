@@ -3,6 +3,16 @@
 import Link from "next/link";
 import { useState } from "react";
 
+const danceStyles = [
+  "Salsa",
+  "Bachata",
+  "Cumbia",
+  "Merengue",
+  "Bolero Son",
+  "Multiple styles",
+  "Not sure yet - help me decide",
+];
+
 const services = [
   "Intro Private Lesson ($79)",
   "Private Lesson ($110)",
@@ -20,6 +30,7 @@ export default function ContactPage() {
     name: "",
     email: "",
     phone: "",
+    danceStyle: "",
     service: "",
     location: "",
     experience: "",
@@ -71,9 +82,16 @@ export default function ContactPage() {
           <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Book your lesson
           </h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-            Ready to start your salsa journey? Fill out the form and I&apos;ll get back to you within 24 hours.
+          <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-6">
+            Ready to start your Latin dance journey? Fill out the form and I&apos;ll get back to you within 24 hours.
           </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {["🔥 Salsa", "💕 Bachata", "🌴 Cumbia", "🎉 Merengue", "🌹 Bolero Son"].map((style) => (
+              <span key={style} className="text-sm bg-white/80 px-3 py-1.5 rounded-full font-medium text-gray-700 shadow-sm">
+                {style}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -88,7 +106,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                  <p className="text-coral-600">hello@salsaforwomen.com</p>
+                  <p className="text-coral-600">hello@latindanceforwomen.com</p>
                 </div>
 
                 <div>
@@ -104,7 +122,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="text-coral-600 hover:text-coral-700"
                   >
-                    @salsaforwomenhtx
+                    @latindanceforwomenhtx
                   </a>
                 </div>
 
@@ -174,8 +192,28 @@ export default function ContactPage() {
                 </div>
 
                 <div>
+                  <label htmlFor="danceStyle" className="block text-sm font-medium text-gray-700 mb-2">
+                    Which dance style interests you? *
+                  </label>
+                  <select
+                    id="danceStyle"
+                    required
+                    value={formData.danceStyle}
+                    onChange={(e) => setFormData({ ...formData, danceStyle: e.target.value })}
+                    className="w-full px-4 py-3 rounded-2xl border border-sand-100 focus:ring-2 focus:ring-coral-500 focus:border-coral-500 outline-none transition-colors bg-white"
+                  >
+                    <option value="">Select a dance style...</option>
+                    {danceStyles.map((style) => (
+                      <option key={style} value={style}>
+                        {style}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
                   <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                    What are you interested in? *
+                    What type of lesson? *
                   </label>
                   <select
                     id="service"
