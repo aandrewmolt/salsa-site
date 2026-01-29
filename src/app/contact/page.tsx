@@ -2,6 +2,17 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Mail, Phone, MapPin, Instagram, Send, Clock, ArrowRight, Flame, Heart, TreePalm, PartyPopper, Flower2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  AnimatedSection,
+  StaggerContainer,
+  StaggerItem,
+  HeroEntrance,
+  Floating,
+  fadeInLeft,
+  fadeInRight,
+} from "@/lib/motion";
 
 const danceStyles = [
   "Salsa",
@@ -76,22 +87,40 @@ export default function ContactPage() {
   return (
     <>
       {/* Header */}
-      <section className="tropical-hero py-16 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-[0.25em] text-coral-600 mb-3">Book</p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Book your lesson
-          </h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-6">
-            Ready to start your Latin dance journey? Fill out the form and I&apos;ll get back to you within 24 hours.
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {["🔥 Salsa", "💕 Bachata", "🌴 Cumbia", "🎉 Merengue", "🌹 Bolero Son"].map((style) => (
-              <span key={style} className="text-sm bg-white/80 px-3 py-1.5 rounded-full font-medium text-gray-700 shadow-sm">
-                {style}
-              </span>
-            ))}
-          </div>
+      <section className="relative overflow-hidden tropical-hero py-16 px-4">
+        <Floating className="absolute -top-20 -left-32 h-72 w-72 rounded-full bg-coral-300/40 blur-3xl" duration={8} />
+        <Floating className="absolute top-10 -right-24 h-64 w-64 rounded-full bg-mango-400/40 blur-3xl" duration={7} distance={16} />
+
+        <div className="relative max-w-6xl mx-auto text-center">
+          <HeroEntrance>
+            <p className="text-sm uppercase tracking-[0.25em] text-coral-600 mb-3">Book</p>
+          </HeroEntrance>
+          <HeroEntrance delay={0.1}>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Book your lesson
+            </h1>
+          </HeroEntrance>
+          <HeroEntrance delay={0.2}>
+            <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-6">
+              Ready to start your Latin dance journey? Fill out the form and I&apos;ll get back to you within 24 hours.
+            </p>
+          </HeroEntrance>
+          <HeroEntrance delay={0.3}>
+            <div className="flex flex-wrap justify-center gap-2">
+              {[
+                { name: "Salsa", icon: Flame, color: "text-coral-600" },
+                { name: "Bachata", icon: Heart, color: "text-pink-500" },
+                { name: "Cumbia", icon: TreePalm, color: "text-teal-500" },
+                { name: "Merengue", icon: PartyPopper, color: "text-mango-500" },
+                { name: "Bolero Son", icon: Flower2, color: "text-rose-500" },
+              ].map((style) => (
+                <span key={style.name} className="inline-flex items-center gap-1.5 text-sm bg-white/80 px-3 py-1.5 rounded-full font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow">
+                  <style.icon className={`h-4 w-4 ${style.color}`} />
+                  {style.name}
+                </span>
+              ))}
+            </div>
+          </HeroEntrance>
         </div>
       </section>
 
@@ -100,50 +129,83 @@ export default function ContactPage() {
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-3 gap-12">
             {/* Contact Info */}
-            <div className="md:col-span-1">
+            <AnimatedSection variants={fadeInLeft} className="md:col-span-1">
               <h2 className="font-display text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
 
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                  <p className="text-coral-600">hello@latindanceforwomen.com</p>
-                </div>
+              <StaggerContainer className="space-y-6" staggerDelay={0.1}>
+                <StaggerItem>
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-coral-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Mail className="h-5 w-5 text-coral-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
+                      <p className="text-coral-600">hello@latindanceforwomen.com</p>
+                    </div>
+                  </div>
+                </StaggerItem>
 
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Phone/Text</h3>
-                  <p className="text-coral-600">(713) 555-0123</p>
-                </div>
+                <StaggerItem>
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-coral-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Phone className="h-5 w-5 text-coral-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-1">Phone/Text</h3>
+                      <p className="text-coral-600">(713) 555-0123</p>
+                    </div>
+                  </div>
+                </StaggerItem>
 
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Instagram</h3>
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-coral-600 hover:text-coral-700"
-                  >
-                    @latindanceforwomenhtx
-                  </a>
-                </div>
+                <StaggerItem>
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-coral-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Instagram className="h-5 w-5 text-coral-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-1">Instagram</h3>
+                      <a
+                        href="https://instagram.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-coral-600 hover:text-coral-700 transition-colors"
+                      >
+                        @latindanceforwomenhtx
+                      </a>
+                    </div>
+                  </div>
+                </StaggerItem>
 
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Locations</h3>
-                  <p className="text-gray-600 text-sm">
-                    Partner studios across Houston: Midtown, The Heights, Galleria, Medical Center
-                  </p>
-                </div>
+                <StaggerItem>
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-coral-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <MapPin className="h-5 w-5 text-coral-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-1">Locations</h3>
+                      <p className="text-gray-600 text-sm">
+                        Partner studios across Houston: Midtown, The Heights, Galleria, Medical Center
+                      </p>
+                    </div>
+                  </div>
+                </StaggerItem>
 
-                <div className="bg-sand-50 rounded-2xl p-4 border border-sand-100">
-                  <h3 className="font-semibold text-gray-900 mb-2">Response Time</h3>
-                  <p className="text-gray-600 text-sm">
-                    I typically respond within 24 hours. For faster response, text or DM me on Instagram.
-                  </p>
-                </div>
-              </div>
-            </div>
+                <StaggerItem>
+                  <div className="bg-sand-50 rounded-2xl p-4 border border-sand-100 flex items-start gap-3">
+                    <Clock className="h-5 w-5 text-coral-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-2">Response Time</h3>
+                      <p className="text-gray-600 text-sm">
+                        I typically respond within 24 hours. For faster response, text or DM me on Instagram.
+                      </p>
+                    </div>
+                  </div>
+                </StaggerItem>
+              </StaggerContainer>
+            </AnimatedSection>
 
             {/* Form */}
-            <div className="md:col-span-2">
+            <AnimatedSection variants={fadeInRight} delay={0.2} className="md:col-span-2">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -283,19 +345,27 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <button
+                <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-coral-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-coral-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  size="lg"
+                  className="w-full bg-coral-600 hover:bg-coral-700 text-white rounded-full text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </button>
+                  {isSubmitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="ml-2 h-5 w-5" />
+                    </>
+                  )}
+                </Button>
 
                 <p className="text-center text-gray-500 text-sm">
                   By submitting, you agree to receive occasional emails about classes and events. Unsubscribe anytime.
                 </p>
               </form>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -303,21 +373,27 @@ export default function ContactPage() {
       {/* Locations */}
       <section className="py-16 px-4 bg-sand-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
-            Studio Locations Across Houston
-          </h2>
-          <p className="text-gray-600 mb-8">
-            I teach at partner studios throughout the city. Your exact address is confirmed after booking based on
-            your preferred area.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <AnimatedSection>
+            <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
+              Studio Locations Across Houston
+            </h2>
+            <p className="text-gray-600 mb-8">
+              I teach at partner studios throughout the city. Your exact address is confirmed after booking based on
+              your preferred area.
+            </p>
+          </AnimatedSection>
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-4" staggerDelay={0.1}>
             {locations.slice(0, 4).map((location) => (
-              <div key={location} className="bg-white rounded-xl p-4 border border-sand-100">
-                <span className="text-2xl mb-2 block">📍</span>
-                <p className="font-medium text-gray-900">{location}</p>
-              </div>
+              <StaggerItem key={location}>
+                <div className="bg-white rounded-xl p-4 border border-sand-100 hover:shadow-lg hover:-translate-y-1 transition-all">
+                  <div className="w-10 h-10 bg-coral-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <MapPin className="h-5 w-5 text-coral-600" />
+                  </div>
+                  <p className="font-medium text-gray-900">{location}</p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
     </>

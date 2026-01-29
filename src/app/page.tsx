@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Star, Check, ArrowRight, Music } from "lucide-react";
+import { Star, Check, ArrowRight, Music, Flame, Heart, TreePalm, PartyPopper, Flower2, Sparkles, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   AnimatedSection,
@@ -12,11 +12,11 @@ import {
 } from "@/lib/motion";
 
 const danceStyles = [
-  { name: "Salsa", emoji: "🔥" },
-  { name: "Bachata", emoji: "💕" },
-  { name: "Cumbia", emoji: "🌴" },
-  { name: "Merengue", emoji: "🎉" },
-  { name: "Bolero Son", emoji: "🌹" },
+  { name: "Salsa", icon: Flame, color: "text-coral-600" },
+  { name: "Bachata", icon: Heart, color: "text-pink-500" },
+  { name: "Cumbia", icon: TreePalm, color: "text-teal-500" },
+  { name: "Merengue", icon: PartyPopper, color: "text-mango-500" },
+  { name: "Bolero Son", icon: Flower2, color: "text-rose-500" },
 ];
 
 export default function Home() {
@@ -57,9 +57,9 @@ export default function Home() {
                   {danceStyles.map((style) => (
                     <span
                       key={style.name}
-                      className="inline-flex items-center gap-1.5 bg-white/80 px-3 py-1.5 rounded-full text-sm font-medium text-gray-700 shadow-sm"
+                      className="inline-flex items-center gap-1.5 bg-white/80 px-3 py-1.5 rounded-full text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow"
                     >
-                      <span>{style.emoji}</span>
+                      <style.icon className={`h-4 w-4 ${style.color}`} />
                       {style.name}
                     </span>
                   ))}
@@ -116,10 +116,12 @@ export default function Home() {
                   <div className="rounded-[24px] bg-gradient-to-br from-coral-200 via-white to-mango-200 p-4">
                     <div className="aspect-[4/5] rounded-[18px] bg-white/80 border border-white/60 flex items-center justify-center text-center">
                       <div className="space-y-3">
-                        <div className="text-5xl">🎬</div>
+                        <div className="w-16 h-16 bg-coral-100 rounded-2xl flex items-center justify-center mx-auto">
+                          <Music className="h-8 w-8 text-coral-600" />
+                        </div>
                         <p className="text-sm font-semibold text-gray-700">Add a 30s teaching reel here</p>
                         <div className="inline-flex items-center gap-2 text-xs text-gray-500">
-                          <span className="h-2 w-2 rounded-full bg-coral-500" />
+                          <Flame className="h-3 w-3 text-coral-500" />
                           Salsa • Bachata • Cumbia
                         </div>
                       </div>
@@ -174,15 +176,17 @@ export default function Home() {
 
           <StaggerContainer className="grid grid-cols-2 md:grid-cols-5 gap-4" staggerDelay={0.1}>
             {[
-              { name: "Salsa", emoji: "🔥", desc: "Fast footwork & Colombian flavor" },
-              { name: "Bachata", emoji: "💕", desc: "Sensual Dominican rhythm" },
-              { name: "Cumbia", emoji: "🌴", desc: "Joyful Colombian folk dance" },
-              { name: "Merengue", emoji: "🎉", desc: "Energetic & easy to learn" },
-              { name: "Bolero Son", emoji: "🌹", desc: "Romantic & elegant" },
+              { name: "Salsa", icon: Flame, color: "bg-coral-500", desc: "Fast footwork & Colombian flavor" },
+              { name: "Bachata", icon: Heart, color: "bg-pink-500", desc: "Sensual Dominican rhythm" },
+              { name: "Cumbia", icon: TreePalm, color: "bg-teal-500", desc: "Joyful Colombian folk dance" },
+              { name: "Merengue", icon: PartyPopper, color: "bg-mango-400", desc: "Energetic & easy to learn" },
+              { name: "Bolero Son", icon: Flower2, color: "bg-rose-500", desc: "Romantic & elegant" },
             ].map((style) => (
               <StaggerItem key={style.name}>
-                <div className="bg-sand-50 rounded-2xl p-5 text-center border border-sand-100 hover:shadow-lg transition-shadow h-full">
-                  <span className="text-3xl block mb-2">{style.emoji}</span>
+                <div className="bg-sand-50 rounded-2xl p-5 text-center border border-sand-100 hover:shadow-lg hover:-translate-y-1 transition-all h-full">
+                  <div className={`w-12 h-12 ${style.color} rounded-xl flex items-center justify-center mx-auto mb-3`}>
+                    <style.icon className="h-6 w-6 text-white" />
+                  </div>
                   <h3 className="font-bold text-gray-900 mb-1">{style.name}</h3>
                   <p className="text-xs text-gray-600">{style.desc}</p>
                 </div>
@@ -208,21 +212,21 @@ export default function Home() {
           <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.15}>
             {[
               {
-                icon: "🌟",
+                icon: Star,
                 bg: "bg-coral-500",
                 cardBg: "bg-white",
                 title: "Beginner-friendly — you don't need experience",
                 desc: "Start from zero with any style. Structured plans, supportive coaching, and clear progress you can feel each week.",
               },
               {
-                icon: "👠",
+                icon: Sparkles,
                 bg: "bg-mango-400",
                 cardBg: "bg-white",
                 title: "Footwork, turns, musicality + ladies styling",
                 desc: "From salsa shines to bachata sensual—learn the authentic techniques of each rhythm the Colombian way.",
               },
               {
-                icon: "👯‍♀️",
+                icon: Users,
                 bg: "bg-teal-500",
                 cardBg: "bg-white",
                 title: "Private lessons + small women-only group classes",
@@ -230,9 +234,9 @@ export default function Home() {
               },
             ].map((benefit) => (
               <StaggerItem key={benefit.title}>
-                <div className={`rounded-2xl p-8 ${benefit.cardBg} border border-sand-100 shadow-sm hover:shadow-lg transition-shadow h-full`}>
+                <div className={`rounded-2xl p-8 ${benefit.cardBg} border border-sand-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all h-full`}>
                   <div className={`w-14 h-14 ${benefit.bg} rounded-2xl flex items-center justify-center mb-6`}>
-                    <span className="text-2xl">{benefit.icon}</span>
+                    <benefit.icon className="h-7 w-7 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
                   <p className="text-gray-600">{benefit.desc}</p>

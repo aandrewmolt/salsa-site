@@ -1,43 +1,68 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Pricing | Latin Dance for Women Houston",
-  description:
-    "Transparent pricing for private Latin dance lessons, group classes, and workshops in Houston. Salsa, bachata, cumbia, merengue & bolero son. Packages available. No hidden fees.",
-};
+import Link from "next/link";
+import { Check, ArrowRight, Sparkles, Users, Star, Gift, Flame, Heart, TreePalm, PartyPopper, Flower2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  AnimatedSection,
+  StaggerContainer,
+  StaggerItem,
+  HeroEntrance,
+  Floating,
+} from "@/lib/motion";
 
 export default function PricingPage() {
   return (
     <>
       {/* Header */}
-      <section className="tropical-hero py-16 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-[0.25em] text-coral-600 mb-3">Pricing</p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Simple, transparent pricing
-          </h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-6">
-            All prices include studio rental. Packages expire in 4 months. Learn any style—salsa, bachata, cumbia, merengue, or bolero son.
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {["🔥 Salsa", "💕 Bachata", "🌴 Cumbia", "🎉 Merengue", "🌹 Bolero Son"].map((style) => (
-              <span key={style} className="text-sm bg-white/80 px-3 py-1.5 rounded-full font-medium text-gray-700 shadow-sm">
-                {style}
-              </span>
-            ))}
-          </div>
+      <section className="relative overflow-hidden tropical-hero py-16 px-4">
+        <Floating className="absolute -top-20 -left-32 h-72 w-72 rounded-full bg-coral-300/40 blur-3xl" duration={8} />
+        <Floating className="absolute top-10 -right-24 h-64 w-64 rounded-full bg-mango-400/40 blur-3xl" duration={7} distance={16} />
+
+        <div className="relative max-w-6xl mx-auto text-center">
+          <HeroEntrance>
+            <p className="text-sm uppercase tracking-[0.25em] text-coral-600 mb-3">Pricing</p>
+          </HeroEntrance>
+          <HeroEntrance delay={0.1}>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Simple, transparent pricing
+            </h1>
+          </HeroEntrance>
+          <HeroEntrance delay={0.2}>
+            <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-6">
+              All prices include studio rental. Packages expire in 4 months. Learn any style—salsa, bachata, cumbia, merengue, or bolero son.
+            </p>
+          </HeroEntrance>
+          <HeroEntrance delay={0.3}>
+            <div className="flex flex-wrap justify-center gap-2">
+              {[
+                { name: "Salsa", icon: Flame, color: "text-coral-600" },
+                { name: "Bachata", icon: Heart, color: "text-pink-500" },
+                { name: "Cumbia", icon: TreePalm, color: "text-teal-500" },
+                { name: "Merengue", icon: PartyPopper, color: "text-mango-500" },
+                { name: "Bolero Son", icon: Flower2, color: "text-rose-500" },
+              ].map((style) => (
+                <span key={style.name} className="inline-flex items-center gap-1.5 text-sm bg-white/80 px-3 py-1.5 rounded-full font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow">
+                  <style.icon className={`h-4 w-4 ${style.color}`} />
+                  {style.name}
+                </span>
+              ))}
+            </div>
+          </HeroEntrance>
         </div>
       </section>
 
       {/* Private Lessons */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
-            Private Lessons <span className="text-coral-500">(Women Only)</span>
-          </h2>
+          <AnimatedSection className="text-center mb-8">
+            <h2 className="font-display text-3xl font-bold text-gray-900">
+              Private Lessons <span className="text-coral-500">(Women Only)</span>
+            </h2>
+          </AnimatedSection>
 
-          <div className="rounded-3xl overflow-hidden border border-sand-100 shadow-sm">
+          <AnimatedSection delay={0.2}>
+            <div className="rounded-3xl overflow-hidden border border-sand-100 shadow-sm hover:shadow-lg transition-shadow">
             <div className="bg-gradient-to-r from-coral-600 to-mango-400 text-white px-6 py-4">
               <p className="font-semibold text-lg">Personalized coaching for fast progress—any dance style</p>
             </div>
@@ -96,11 +121,14 @@ export default function PricingPage() {
                 </tbody>
               </table>
             </div>
-          </div>
+            </div>
+          </AnimatedSection>
 
-          <p className="text-center text-gray-500 mt-4 text-sm">
-            * Packages expire 4 months from purchase date. Mix styles across lessons!
-          </p>
+          <AnimatedSection delay={0.3}>
+            <p className="text-center text-gray-500 mt-4 text-sm">
+              * Packages expire 4 months from purchase date. Mix styles across lessons!
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -146,40 +174,51 @@ export default function PricingPage() {
       {/* Group Classes */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
-            Women&apos;s Group Classes
-          </h2>
+          <AnimatedSection className="text-center mb-8">
+            <h2 className="font-display text-3xl font-bold text-gray-900">
+              Women&apos;s Group Classes
+            </h2>
+          </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-sand-50 rounded-2xl p-6 text-center border border-sand-100">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Drop-in</h3>
-              <p className="text-4xl font-bold text-coral-500 mb-4">$25</p>
-              <p className="text-gray-600 text-sm">Try a single class with no commitment</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-coral-600 to-mango-400 rounded-2xl p-6 text-center text-white relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-coral-700 text-xs px-3 py-1 rounded-full font-bold">
-                RECOMMENDED
+          <StaggerContainer className="grid md:grid-cols-3 gap-6" staggerDelay={0.15}>
+            <StaggerItem>
+              <div className="bg-sand-50 rounded-2xl p-6 text-center border border-sand-100 hover:shadow-lg hover:-translate-y-1 transition-all h-full">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Drop-in</h3>
+                <p className="text-4xl font-bold text-coral-500 mb-4">$25</p>
+                <p className="text-gray-600 text-sm">Try a single class with no commitment</p>
               </div>
-              <h3 className="text-xl font-bold mb-2">4-Week Series</h3>
-              <p className="text-4xl font-bold mb-4">$89</p>
-              <p className="text-white/80 text-sm">
-                Progressive curriculum, same group each week
-              </p>
-              <p className="text-white/70 text-xs mt-2">$22.25/class</p>
-            </div>
+            </StaggerItem>
 
-            <div className="bg-sand-50 rounded-2xl p-6 text-center border border-sand-100">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">6-Week Series</h3>
-              <p className="text-4xl font-bold text-coral-500 mb-4">$129</p>
-              <p className="text-gray-600 text-sm">Deep dive into technique and styling</p>
-              <p className="text-gray-500 text-xs mt-2">$21.50/class</p>
-            </div>
-          </div>
+            <StaggerItem>
+              <div className="bg-gradient-to-br from-coral-600 to-mango-400 rounded-2xl p-6 text-center text-white relative hover:shadow-xl hover:-translate-y-2 transition-all h-full">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-coral-700 text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1">
+                  <Star className="h-3 w-3 fill-current" />
+                  RECOMMENDED
+                </div>
+                <h3 className="text-xl font-bold mb-2">4-Week Series</h3>
+                <p className="text-4xl font-bold mb-4">$89</p>
+                <p className="text-white/80 text-sm">
+                  Progressive curriculum, same group each week
+                </p>
+                <p className="text-white/70 text-xs mt-2">$22.25/class</p>
+              </div>
+            </StaggerItem>
 
-          <p className="text-center text-gray-600 mt-6 text-sm">
-            Group series available for salsa, bachata, cumbia, and merengue. Check schedule for current offerings.
-          </p>
+            <StaggerItem>
+              <div className="bg-sand-50 rounded-2xl p-6 text-center border border-sand-100 hover:shadow-lg hover:-translate-y-1 transition-all h-full">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">6-Week Series</h3>
+                <p className="text-4xl font-bold text-coral-500 mb-4">$129</p>
+                <p className="text-gray-600 text-sm">Deep dive into technique and styling</p>
+                <p className="text-gray-500 text-xs mt-2">$21.50/class</p>
+              </div>
+            </StaggerItem>
+          </StaggerContainer>
+
+          <AnimatedSection delay={0.4} className="mt-6">
+            <p className="text-center text-gray-600 text-sm">
+              Group series available for salsa, bachata, cumbia, and merengue. Check schedule for current offerings.
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -231,10 +270,12 @@ export default function PricingPage() {
       {/* Policies */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display text-2xl font-bold text-gray-900 mb-6 text-center">
-            Good to Know
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <AnimatedSection className="text-center mb-6">
+            <h2 className="font-display text-2xl font-bold text-gray-900">
+              Good to Know
+            </h2>
+          </AnimatedSection>
+          <StaggerContainer className="grid md:grid-cols-2 gap-6" staggerDelay={0.1}>
             {[
               {
                 title: "All prices include studio",
@@ -253,32 +294,38 @@ export default function PricingPage() {
                 body: "$20 off when a friend books an intro!",
               },
             ].map((item) => (
-              <div key={item.title} className="flex gap-3 bg-sand-50 rounded-2xl p-5">
-                <span className="text-coral-500 text-xl">✓</span>
-                <div>
-                  <h3 className="font-semibold text-gray-900">{item.title}</h3>
-                  <p className="text-gray-600 text-sm">{item.body}</p>
+              <StaggerItem key={item.title}>
+                <div className="flex gap-3 bg-sand-50 rounded-2xl p-5 hover:shadow-md transition-shadow">
+                  <Check className="h-6 w-6 text-coral-500 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-gray-900">{item.title}</h3>
+                    <p className="text-gray-600 text-sm">{item.body}</p>
+                  </div>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-16 px-4 bg-[#1f1a16]">
-        <div className="max-w-4xl mx-auto text-center text-white">
+        <AnimatedSection className="max-w-4xl mx-auto text-center text-white">
           <h2 className="font-display text-3xl font-bold mb-4">Ready to get started?</h2>
           <p className="text-gray-300 text-lg mb-8">
             Book your intro lesson to experience the difference. Choose any style—salsa, bachata, cumbia, merengue, or bolero son.
           </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-mango-400 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-mango-500 transition-colors"
+          <Button
+            asChild
+            size="lg"
+            className="bg-mango-400 hover:bg-mango-500 text-gray-900 rounded-full px-8 text-lg"
           >
-            Book Intro Lesson — $79
-          </Link>
-        </div>
+            <Link href="/contact">
+              Book Intro Lesson — $79
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+        </AnimatedSection>
       </section>
     </>
   );

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, MapPin, Heart, Music } from "lucide-react";
+import { Instagram, MapPin, Heart, Music, Flame, TreePalm, PartyPopper, Flower2 } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -9,7 +9,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <span className="text-2xl">💃</span>
+              <div className="w-9 h-9 bg-coral-600 rounded-xl flex items-center justify-center">
+                <Music className="h-5 w-5 text-white" />
+              </div>
               <span className="font-display text-xl">Latin Dance for Women</span>
             </div>
             <p className="text-gray-300 mb-4">
@@ -17,9 +19,16 @@ export default function Footer() {
               feminine, and free on the dance floor—no partner needed.
             </p>
             <div className="flex flex-wrap gap-2 mb-4">
-              {["Salsa", "Bachata", "Cumbia", "Merengue", "Bolero Son"].map((style) => (
-                <span key={style} className="text-xs bg-white/10 px-2 py-1 rounded-full">
-                  {style}
+              {[
+                { name: "Salsa", icon: Flame },
+                { name: "Bachata", icon: Heart },
+                { name: "Cumbia", icon: TreePalm },
+                { name: "Merengue", icon: PartyPopper },
+                { name: "Bolero Son", icon: Flower2 },
+              ].map((style) => (
+                <span key={style.name} className="inline-flex items-center gap-1 text-xs bg-white/10 px-2 py-1 rounded-full">
+                  <style.icon className="h-3 w-3" />
+                  {style.name}
                 </span>
               ))}
             </div>

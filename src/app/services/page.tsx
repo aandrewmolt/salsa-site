@@ -1,24 +1,32 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Services | Latin Dance for Women Houston",
-  description:
-    "Private Latin dance lessons, semi-private sessions, group classes, and ladies styling workshops for women in Houston. Salsa, bachata, cumbia, merengue & bolero son. No partner needed.",
-};
+import Link from "next/link";
+import { Sparkles, Users, Music, Heart, Flame, ArrowRight, Check, HelpCircle, TreePalm, PartyPopper, Flower2, Target, UserPlus, GraduationCap } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  AnimatedSection,
+  StaggerContainer,
+  StaggerItem,
+  HeroEntrance,
+  Floating,
+  fadeInLeft,
+  fadeInRight,
+} from "@/lib/motion";
+
 
 const danceStyles = [
-  { name: "Salsa", emoji: "🔥", desc: "Fast footwork, shines, Colombian caleña style" },
-  { name: "Bachata", emoji: "💕", desc: "Sensual Dominican rhythm, body movement" },
-  { name: "Cumbia", emoji: "🌴", desc: "Joyful Colombian folk dance, easy to learn" },
-  { name: "Merengue", emoji: "🎉", desc: "Energetic, great for beginners" },
-  { name: "Bolero Son", emoji: "🌹", desc: "Romantic, elegant, slower tempo" },
+  { name: "Salsa", icon: Flame, color: "bg-coral-500", desc: "Fast footwork, shines, Colombian caleña style" },
+  { name: "Bachata", icon: Heart, color: "bg-pink-500", desc: "Sensual Dominican rhythm, body movement" },
+  { name: "Cumbia", icon: TreePalm, color: "bg-teal-500", desc: "Joyful Colombian folk dance, easy to learn" },
+  { name: "Merengue", icon: PartyPopper, color: "bg-mango-400", desc: "Energetic, great for beginners" },
+  { name: "Bolero Son", icon: Flower2, color: "bg-rose-500", desc: "Romantic, elegant, slower tempo" },
 ];
 
 const services = [
   {
     title: "Private Lessons",
-    emoji: "🎯",
+    icon: Target,
+    iconBg: "bg-coral-600",
     whoFor: "Women wanting personalized attention and fast progress",
     description:
       "One-on-one instruction tailored to your goals. Choose any style or mix multiple rhythms. Ideal for beginners or dancers who want faster, focused growth.",
@@ -35,7 +43,8 @@ const services = [
   },
   {
     title: "Semi-Private Lessons",
-    emoji: "👯‍♀️",
+    icon: UserPlus,
+    iconBg: "bg-mango-400",
     whoFor: "Friends who want to learn together",
     description:
       "Bring your bestie, sister, or colleague. Learn salsa, bachata, or any style with the same quality as privates in a shared, fun experience.",
@@ -51,7 +60,8 @@ const services = [
   },
   {
     title: "Women's Group Series",
-    emoji: "💃",
+    icon: Users,
+    iconBg: "bg-teal-500",
     whoFor: "Women wanting community + weekly structure",
     description:
       "Progressive 4–6 week series focused on one style. Build friendships while building skill in salsa, bachata, cumbia, or merengue.",
@@ -67,7 +77,8 @@ const services = [
   },
   {
     title: "Ladies Styling Workshop",
-    emoji: "✨",
+    icon: Sparkles,
+    iconBg: "bg-pink-500",
     whoFor: "Any level wanting to add polish and feminine movement",
     description:
       "A focused workshop on the art of feminine expression across all Latin dance styles. Add that extra 'sabor' to your movement.",
@@ -115,114 +126,134 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="tropical-hero py-16 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-[0.25em] text-coral-600 mb-3">
-            Services
-          </p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Choose your perfect way to learn
-          </h1>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-8">
-            From private one-on-one lessons to energizing group classes, find the best fit for your goals—across all five Latin rhythms.
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {danceStyles.map((style) => (
-              <span
-                key={style.name}
-                className="inline-flex items-center gap-1.5 bg-white/80 px-3 py-1.5 rounded-full text-sm font-medium text-gray-700 shadow-sm"
-              >
-                <span>{style.emoji}</span>
-                {style.name}
-              </span>
-            ))}
-          </div>
+      <section className="relative overflow-hidden tropical-hero py-16 px-4">
+        <Floating className="absolute -top-20 -left-32 h-72 w-72 rounded-full bg-coral-300/40 blur-3xl" duration={8} />
+        <Floating className="absolute top-10 -right-24 h-64 w-64 rounded-full bg-mango-400/40 blur-3xl" duration={7} distance={16} />
+
+        <div className="relative max-w-6xl mx-auto text-center">
+          <HeroEntrance>
+            <p className="text-sm uppercase tracking-[0.25em] text-coral-600 mb-3">
+              Services
+            </p>
+          </HeroEntrance>
+          <HeroEntrance delay={0.1}>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Choose your perfect way to learn
+            </h1>
+          </HeroEntrance>
+          <HeroEntrance delay={0.2}>
+            <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-8">
+              From private one-on-one lessons to energizing group classes, find the best fit for your goals—across all five Latin rhythms.
+            </p>
+          </HeroEntrance>
+          <HeroEntrance delay={0.3}>
+            <div className="flex flex-wrap justify-center gap-2">
+              {danceStyles.map((style) => (
+                <span
+                  key={style.name}
+                  className="inline-flex items-center gap-1.5 bg-white/80 px-3 py-1.5 rounded-full text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <style.icon className="h-4 w-4" />
+                  {style.name}
+                </span>
+              ))}
+            </div>
+          </HeroEntrance>
         </div>
       </section>
 
       {/* Dance Styles Grid */}
       <section className="py-12 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-display text-2xl font-bold text-gray-900 mb-6 text-center">
-            Dance Styles We Teach
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <AnimatedSection className="text-center mb-6">
+            <h2 className="font-display text-2xl font-bold text-gray-900">
+              Dance Styles We Teach
+            </h2>
+          </AnimatedSection>
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-5 gap-4" staggerDelay={0.1}>
             {danceStyles.map((style) => (
-              <div
-                key={style.name}
-                className="bg-sand-50 rounded-2xl p-4 text-center border border-sand-100"
-              >
-                <span className="text-2xl block mb-2">{style.emoji}</span>
-                <h3 className="font-bold text-gray-900 text-sm mb-1">{style.name}</h3>
-                <p className="text-xs text-gray-600">{style.desc}</p>
-              </div>
+              <StaggerItem key={style.name}>
+                <div className="bg-sand-50 rounded-2xl p-4 text-center border border-sand-100 hover:shadow-lg hover:-translate-y-1 transition-all">
+                  <div className={`w-10 h-10 ${style.color} rounded-xl flex items-center justify-center mx-auto mb-2`}>
+                    <style.icon className="h-5 w-5 text-white" />
+                  </div>
+                  <h3 className="font-bold text-gray-900 text-sm mb-1">{style.name}</h3>
+                  <p className="text-xs text-gray-600">{style.desc}</p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Services Grid */}
       <section className="py-16 px-4 bg-sand-50">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8">
+          <StaggerContainer className="grid lg:grid-cols-2 gap-8" staggerDelay={0.15}>
             {services.map((service) => (
-              <div
-                key={service.title}
-                className={`rounded-3xl p-8 border transition-transform hover:-translate-y-1 ${
-                  service.highlight
-                    ? "bg-gradient-to-br from-coral-600 to-mango-400 text-white border-transparent shadow-xl"
-                    : "bg-white border-sand-100 shadow-sm"
-                }`}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-4xl">{service.emoji}</span>
-                  <h2 className="text-2xl font-bold">{service.title}</h2>
-                </div>
-
-                <p
-                  className={`text-sm font-semibold mb-3 ${
-                    service.highlight ? "text-coral-100" : "text-coral-600"
+              <StaggerItem key={service.title}>
+                <div
+                  className={`rounded-3xl p-8 border transition-all hover:-translate-y-2 hover:shadow-xl h-full ${
+                    service.highlight
+                      ? "bg-gradient-to-br from-coral-600 to-mango-400 text-white border-transparent shadow-xl"
+                      : "bg-white border-sand-100 shadow-sm"
                   }`}
                 >
-                  For: {service.whoFor}
-                </p>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={`w-12 h-12 ${service.highlight ? "bg-white/20" : service.iconBg} rounded-xl flex items-center justify-center flex-shrink-0`}>
+                      <service.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <h2 className="text-2xl font-bold">{service.title}</h2>
+                  </div>
 
-                <p className={`mb-6 ${service.highlight ? "text-white/90" : "text-gray-600"}`}>
-                  {service.description}
-                </p>
-
-                <div className="mb-6">
-                  <h3 className={`font-semibold mb-3 ${service.highlight ? "text-white" : "text-gray-900"}`}>
-                    What you&apos;ll learn:
-                  </h3>
-                  <ul className="space-y-2">
-                    {service.learns.map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <span className={service.highlight ? "text-white" : "text-coral-600"}>✓</span>
-                        <span className={service.highlight ? "text-white/90" : "text-gray-600"}>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <p className={`font-bold text-lg ${service.highlight ? "text-white" : "text-gray-900"}`}>
-                    {service.pricing}
-                  </p>
-                  <Link
-                    href="/contact"
-                    className={`px-6 py-3 rounded-full font-semibold text-center transition-colors ${
-                      service.highlight
-                        ? "bg-white text-coral-700 hover:bg-coral-50"
-                        : "bg-coral-600 text-white hover:bg-coral-700"
+                  <p
+                    className={`text-sm font-semibold mb-3 ${
+                      service.highlight ? "text-coral-100" : "text-coral-600"
                     }`}
                   >
-                    {service.cta}
-                  </Link>
+                    For: {service.whoFor}
+                  </p>
+
+                  <p className={`mb-6 ${service.highlight ? "text-white/90" : "text-gray-600"}`}>
+                    {service.description}
+                  </p>
+
+                  <div className="mb-6">
+                    <h3 className={`font-semibold mb-3 ${service.highlight ? "text-white" : "text-gray-900"}`}>
+                      What you&apos;ll learn:
+                    </h3>
+                    <ul className="space-y-2">
+                      {service.learns.map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <Check className={`h-5 w-5 flex-shrink-0 ${service.highlight ? "text-white" : "text-coral-600"}`} />
+                          <span className={service.highlight ? "text-white/90" : "text-gray-600"}>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <p className={`font-bold text-lg ${service.highlight ? "text-white" : "text-gray-900"}`}>
+                      {service.pricing}
+                    </p>
+                    <Button
+                      asChild
+                      className={`rounded-full ${
+                        service.highlight
+                          ? "bg-white text-coral-700 hover:bg-coral-50"
+                          : "bg-coral-600 text-white hover:bg-coral-700"
+                      }`}
+                    >
+                      <Link href="/contact">
+                        {service.cta}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -252,36 +283,45 @@ export default function ServicesPage() {
       {/* FAQ */}
       <section className="py-16 px-4 bg-sand-50">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-6">
+          <AnimatedSection className="text-center mb-8">
+            <h2 className="font-display text-3xl font-bold text-gray-900 flex items-center justify-center gap-3">
+              <HelpCircle className="h-8 w-8 text-coral-600" />
+              Frequently Asked Questions
+            </h2>
+          </AnimatedSection>
+          <StaggerContainer className="space-y-6" staggerDelay={0.1}>
             {faqs.map((faq) => (
-              <div key={faq.question} className="bg-white border border-sand-100 rounded-2xl p-6">
-                <h3 className="font-bold text-lg text-gray-900 mb-2">{faq.question}</h3>
-                <p className="text-gray-600">{faq.answer}</p>
-              </div>
+              <StaggerItem key={faq.question}>
+                <div className="bg-white border border-sand-100 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">{faq.question}</h3>
+                  <p className="text-gray-600">{faq.answer}</p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-16 px-4 bg-[#1f1a16]">
-        <div className="max-w-4xl mx-auto text-center text-white">
+        <AnimatedSection className="max-w-4xl mx-auto text-center text-white">
           <h2 className="font-display text-3xl font-bold mb-4">
             Not sure which service fits?
           </h2>
           <p className="text-gray-300 text-lg mb-8">
             Book an intro lesson and we&apos;ll tailor a plan around your goals, preferred style, and schedule.
           </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-mango-400 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-mango-500 transition-colors"
+          <Button
+            asChild
+            size="lg"
+            className="bg-mango-400 hover:bg-mango-500 text-gray-900 rounded-full px-8 text-lg"
           >
-            Book Intro Lesson — $79
-          </Link>
-        </div>
+            <Link href="/contact">
+              Book Intro Lesson — $79
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+        </AnimatedSection>
       </section>
     </>
   );

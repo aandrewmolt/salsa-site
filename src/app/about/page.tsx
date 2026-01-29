@@ -1,54 +1,88 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "About | Latin Dance for Women Houston",
-  description:
-    "Meet your Colombian dance instructor. Learn about the authentic, women-centered approach to Latin dance instruction in Houston—salsa, bachata, cumbia, merengue & bolero son.",
-};
+import Link from "next/link";
+import { Heart, Sparkles, Users, Music, ArrowRight, Award, Globe, Flame, TreePalm, PartyPopper, Flower2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  AnimatedSection,
+  StaggerContainer,
+  StaggerItem,
+  HeroEntrance,
+  Floating,
+  fadeInLeft,
+  fadeInRight,
+} from "@/lib/motion";
 
 export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="tropical-hero py-16 px-4">
-        <div className="max-w-6xl mx-auto">
+      <section className="relative overflow-hidden tropical-hero py-16 px-4">
+        <Floating className="absolute -top-20 -left-32 h-72 w-72 rounded-full bg-coral-300/40 blur-3xl" duration={8} />
+        <Floating className="absolute top-10 -right-24 h-64 w-64 rounded-full bg-mango-400/40 blur-3xl" duration={7} distance={16} />
+
+        <div className="relative max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white/80 text-coral-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                🇨🇴 Born & Raised in Colombia
-              </div>
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-                Teaching Latin dance the way I learned it—with heart and soul
-              </h1>
-              <p className="text-xl text-gray-700 mb-4">
-                I grew up surrounded by salsa, cumbia, and all the rhythms of Colombia. The music, the movement, the joy—it&apos;s in my blood.
-                Now I share that passion with women in Houston who want to feel that same magic.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {["Salsa", "Bachata", "Cumbia", "Merengue", "Bolero Son"].map((style) => (
-                  <span key={style} className="text-xs bg-coral-100 text-coral-700 px-3 py-1 rounded-full font-medium">
-                    {style}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="relative">
-              <div className="glass rounded-[28px] p-6">
-                <div className="rounded-[22px] bg-gradient-to-br from-coral-200 via-white to-mango-200 p-4">
-                  <div className="aspect-square rounded-[18px] bg-white/80 flex items-center justify-center text-center border border-white/60">
-                    <div className="space-y-3">
-                      <span className="text-7xl block">💃</span>
-                      <p className="text-sm font-semibold text-gray-700">Instructor photo here</p>
+            <AnimatedSection variants={fadeInLeft}>
+              <HeroEntrance>
+                <div className="inline-flex items-center gap-2 bg-white/80 text-coral-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                  <Globe className="h-4 w-4" />
+                  Born & Raised in Colombia
+                </div>
+              </HeroEntrance>
+              <HeroEntrance delay={0.1}>
+                <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                  Teaching Latin dance the way I learned it—with heart and soul
+                </h1>
+              </HeroEntrance>
+              <HeroEntrance delay={0.2}>
+                <p className="text-xl text-gray-700 mb-4">
+                  I grew up surrounded by salsa, cumbia, and all the rhythms of Colombia. The music, the movement, the joy—it&apos;s in my blood.
+                  Now I share that passion with women in Houston who want to feel that same magic.
+                </p>
+              </HeroEntrance>
+              <HeroEntrance delay={0.3}>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { name: "Salsa", icon: Flame },
+                    { name: "Bachata", icon: Heart },
+                    { name: "Cumbia", icon: TreePalm },
+                    { name: "Merengue", icon: PartyPopper },
+                    { name: "Bolero Son", icon: Flower2 },
+                  ].map((style) => (
+                    <span key={style.name} className="inline-flex items-center gap-1.5 text-xs bg-coral-100 text-coral-700 px-3 py-1 rounded-full font-medium hover:bg-coral-200 transition-colors">
+                      <style.icon className="h-3 w-3" />
+                      {style.name}
+                    </span>
+                  ))}
+                </div>
+              </HeroEntrance>
+            </AnimatedSection>
+            <AnimatedSection variants={fadeInRight} delay={0.2}>
+              <div className="relative">
+                <div className="glass rounded-[28px] p-6">
+                  <div className="rounded-[22px] bg-gradient-to-br from-coral-200 via-white to-mango-200 p-4">
+                    <div className="aspect-square rounded-[18px] bg-white/80 flex items-center justify-center text-center border border-white/60">
+                      <div className="space-y-3">
+                        <div className="w-20 h-20 bg-coral-100 rounded-2xl flex items-center justify-center mx-auto">
+                          <Music className="h-10 w-10 text-coral-600" />
+                        </div>
+                        <p className="text-sm font-semibold text-gray-700">Instructor photo here</p>
+                      </div>
                     </div>
                   </div>
                 </div>
+                <Floating className="absolute -bottom-4 -right-4" duration={5} distance={8}>
+                  <div className="bg-white rounded-2xl px-4 py-3 shadow-lg">
+                    <p className="font-display text-coral-600 flex items-center gap-2">
+                      <Award className="h-4 w-4" />
+                      10+ years
+                    </p>
+                    <p className="text-gray-600 text-sm">teaching experience</p>
+                  </div>
+                </Floating>
               </div>
-              <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl px-4 py-3 shadow-lg">
-                <p className="font-display text-coral-600">10+ years</p>
-                <p className="text-gray-600 text-sm">teaching experience</p>
-              </div>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -56,62 +90,82 @@ export default function AboutPage() {
       {/* Colombian Authenticity */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
-            Why Learning from a Colombian Matters
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-sand-50 rounded-2xl p-8 border border-sand-100">
-              <span className="text-4xl mb-4 block">🎵</span>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Real Technique, Real Sabor</h3>
-              <p className="text-gray-600">
-                Colombian salsa (salsa caleña) is known for fast footwork and joyful energy. Cumbia is in our blood.
-                When you learn from someone who grew up with these rhythms, you get the real feel—not a watered-down version.
-              </p>
-            </div>
-            <div className="bg-sand-50 rounded-2xl p-8 border border-sand-100">
-              <span className="text-4xl mb-4 block">💫</span>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Cultural Connection</h3>
-              <p className="text-gray-600">
-                Latin dance isn&apos;t just steps—it&apos;s a way of expressing joy, connecting with music, and honoring culture.
-                I share the spirit and story behind each rhythm, not just the moves.
-              </p>
-            </div>
-          </div>
+          <AnimatedSection className="text-center mb-8">
+            <h2 className="font-display text-3xl font-bold text-gray-900">
+              Why Learning from a Colombian Matters
+            </h2>
+          </AnimatedSection>
+          <StaggerContainer className="grid md:grid-cols-2 gap-8" staggerDelay={0.15}>
+            <StaggerItem>
+              <div className="bg-sand-50 rounded-2xl p-8 border border-sand-100 hover:shadow-lg hover:-translate-y-1 transition-all h-full">
+                <div className="w-14 h-14 bg-coral-500 rounded-2xl flex items-center justify-center mb-4">
+                  <Music className="h-7 w-7 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Real Technique, Real Sabor</h3>
+                <p className="text-gray-600">
+                  Colombian salsa (salsa caleña) is known for fast footwork and joyful energy. Cumbia is in our blood.
+                  When you learn from someone who grew up with these rhythms, you get the real feel—not a watered-down version.
+                </p>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="bg-sand-50 rounded-2xl p-8 border border-sand-100 hover:shadow-lg hover:-translate-y-1 transition-all h-full">
+                <div className="w-14 h-14 bg-mango-400 rounded-2xl flex items-center justify-center mb-4">
+                  <Sparkles className="h-7 w-7 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Cultural Connection</h3>
+                <p className="text-gray-600">
+                  Latin dance isn&apos;t just steps—it&apos;s a way of expressing joy, connecting with music, and honoring culture.
+                  I share the spirit and story behind each rhythm, not just the moves.
+                </p>
+              </div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Teaching Philosophy */}
       <section className="py-16 px-4 bg-sand-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
-            My Teaching Philosophy
-          </h2>
-          <div className="space-y-6">
+          <AnimatedSection className="text-center mb-8">
+            <h2 className="font-display text-3xl font-bold text-gray-900">
+              My Teaching Philosophy
+            </h2>
+          </AnimatedSection>
+          <StaggerContainer className="space-y-6" staggerDelay={0.15}>
             {[
               {
                 title: "Supportive, not intimidating",
                 body: "I create a space where you can make mistakes, ask questions, and learn at your pace—no judgment, no pressure.",
+                icon: Heart,
+                bg: "bg-coral-600",
               },
               {
                 title: "Technique + expression",
                 body: "Good technique is the foundation, but dancing is about feeling the music. I teach both—across salsa, bachata, cumbia, merengue, and bolero son.",
+                icon: Music,
+                bg: "bg-mango-400",
               },
               {
                 title: "Practical skills for social dancing",
                 body: "Everything I teach is designed to help you dance confidently at Latin nights and social events, in any rhythm.",
+                icon: Users,
+                bg: "bg-teal-500",
               },
             ].map((item, index) => (
-              <div key={item.title} className="bg-white rounded-2xl p-6 flex gap-4 border border-sand-100">
-                <div className="w-12 h-12 bg-coral-600 text-white rounded-full flex items-center justify-center flex-shrink-0 text-lg font-bold">
-                  {index + 1}
+              <StaggerItem key={item.title}>
+                <div className="bg-white rounded-2xl p-6 flex gap-4 border border-sand-100 hover:shadow-lg transition-shadow">
+                  <div className={`w-12 h-12 ${item.bg} text-white rounded-full flex items-center justify-center flex-shrink-0`}>
+                    <item.icon className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 text-lg mb-2">{item.title}</h3>
+                    <p className="text-gray-600">{item.body}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 text-lg mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.body}</p>
-                </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -149,37 +203,45 @@ export default function AboutPage() {
       {/* Credentials */}
       <section className="py-16 px-4 bg-sand-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-display text-3xl font-bold text-gray-900 mb-8">Background & Experience</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <AnimatedSection className="mb-8">
+            <h2 className="font-display text-3xl font-bold text-gray-900">Background & Experience</h2>
+          </AnimatedSection>
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-6" staggerDelay={0.1}>
             {[
               { label: "Years teaching", value: "10+" },
               { label: "Students taught", value: "500+" },
               { label: "Dance styles", value: "5" },
               { label: "Languages", value: "2" },
             ].map((item) => (
-              <div key={item.label} className="bg-white rounded-xl p-6 border border-sand-100">
-                <p className="font-display text-3xl text-coral-500 mb-2">{item.value}</p>
-                <p className="text-gray-600">{item.label}</p>
-              </div>
+              <StaggerItem key={item.label}>
+                <div className="bg-white rounded-xl p-6 border border-sand-100 hover:shadow-lg hover:-translate-y-1 transition-all">
+                  <p className="font-display text-3xl text-coral-500 mb-2">{item.value}</p>
+                  <p className="text-gray-600">{item.label}</p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-16 px-4 bg-[#1f1a16]">
-        <div className="max-w-4xl mx-auto text-center text-white">
+        <AnimatedSection className="max-w-4xl mx-auto text-center text-white">
           <h2 className="font-display text-3xl font-bold mb-4">Let&apos;s dance together</h2>
           <p className="text-gray-300 text-lg mb-8">
             Book an intro lesson and let&apos;s see where the music takes us—salsa, bachata, cumbia, or all of them.
           </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-mango-400 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-mango-500 transition-colors"
+          <Button
+            asChild
+            size="lg"
+            className="bg-mango-400 hover:bg-mango-500 text-gray-900 rounded-full px-8 text-lg"
           >
-            Book Intro Lesson — $79
-          </Link>
-        </div>
+            <Link href="/contact">
+              Book Intro Lesson — $79
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+        </AnimatedSection>
       </section>
     </>
   );

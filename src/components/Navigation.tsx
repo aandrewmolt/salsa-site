@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Menu, Music } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -27,7 +27,9 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl">💃</span>
+            <div className="w-9 h-9 bg-coral-600 rounded-xl flex items-center justify-center">
+              <Music className="h-5 w-5 text-white" />
+            </div>
             <div className="flex flex-col leading-none">
               <span className="font-display text-lg md:text-xl text-coral-700 tracking-tight">
                 Latin Dance for Women
@@ -72,7 +74,9 @@ export default function Navigation() {
             <SheetContent side="right" className="w-[300px] sm:w-[350px]">
               <SheetHeader>
                 <SheetTitle className="flex items-center space-x-2">
-                  <span className="text-xl">💃</span>
+                  <div className="w-8 h-8 bg-coral-600 rounded-xl flex items-center justify-center">
+                    <Music className="h-4 w-4 text-white" />
+                  </div>
                   <span className="font-display text-coral-700">Latin Dance for Women</span>
                 </SheetTitle>
               </SheetHeader>
